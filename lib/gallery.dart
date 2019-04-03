@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'home.dart';
 import 'posts.dart';
 
 class MyGallery extends StatefulWidget {
@@ -17,8 +18,8 @@ class _MyGalleryState extends State<MyGallery> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           new UserAccountsDrawerHeader(
-            accountEmail: new Text("User@g.net"),
-            accountName: new Text("User1"),
+            accountEmail: new Text("agoo@g.net"),
+            accountName: new Text("Agoo Clinton"),
             currentAccountPicture: new CircleAvatar(
               backgroundImage: new NetworkImage(
                   'https://source.unsplash.com/random/700x729/?sexy,lady'),
@@ -35,12 +36,12 @@ class _MyGalleryState extends State<MyGallery> {
             title: new Text('Home'),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => QuickBee()));
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
             },
           ),
           new ListTile(
-            leading: new Icon(Icons.list),
-            title: new Text('Posts'),
+            leading: new Icon(Icons.supervised_user_circle),
+            title: new Text('People'),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Post()));
@@ -77,6 +78,14 @@ class _MyGalleryState extends State<MyGallery> {
           new ListTile(
             leading: new Icon(Icons.settings),
             title: new Text('Settings'),
+          ),
+           new ListTile(
+            leading: new Icon(Icons.account_circle),
+            title: new Text('Log Out'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => QuickBee()));
+            },
           )
         ],
       ),

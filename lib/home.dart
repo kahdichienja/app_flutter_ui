@@ -15,18 +15,19 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           new UserAccountsDrawerHeader(
-            accountEmail: new Text("User@g.net"),
-            accountName: new Text("User1"),
+            accountEmail: new Text("agoo@g.net"),
+            accountName: new Text("Agoo Clinton"),
             currentAccountPicture: new CircleAvatar(
-              backgroundImage: new  NetworkImage('https://source.unsplash.com/random/700x729'),
+              backgroundImage: new NetworkImage(
+                  'https://source.unsplash.com/random/700x729'),
             ),
             decoration: new BoxDecoration(
-              image: new DecorationImage(image: new NetworkImage('https://source.unsplash.com/random/700x709'),
-              fit: BoxFit.cover
-              )
-            ),
+                image: new DecorationImage(
+                    image: new NetworkImage(
+                        'https://source.unsplash.com/random/700x709'),
+                    fit: BoxFit.cover)),
           ),
-            // remvd smth
+          // remvd smth
           new ListTile(
             leading: new Icon(Icons.home),
             title: new Text('Home'),
@@ -36,12 +37,11 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           new ListTile(
-            leading: new Icon(Icons.list),
-            title: new Text('Posts'),
+            leading: new Icon(Icons.supervised_user_circle),
+            title: new Text('People'),
             onTap: () {
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Post())
-              );
+                  context, MaterialPageRoute(builder: (context) => Post()));
             },
           ),
           new ListTile(
@@ -51,10 +51,9 @@ class _HomePageState extends State<HomePage> {
           new ListTile(
             leading: new Icon(Icons.camera),
             title: new Text('Gallery'),
-            onTap: (){
-              Navigator.push(
-                context, MaterialPageRoute(builder:  (context) => MyGallery())
-              );
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyGallery()));
             },
           ),
           new ListTile(
@@ -76,6 +75,14 @@ class _HomePageState extends State<HomePage> {
           new ListTile(
             leading: new Icon(Icons.settings),
             title: new Text('Settings'),
+          ),
+          new ListTile(
+            leading: new Icon(Icons.account_circle),
+            title: new Text('Log Out'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => QuickBee()));
+            },
           )
         ],
       ),
@@ -129,7 +136,7 @@ class MainContent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: new Container(
-            child: new Column(
+              child: new Column(
             children: <Widget>[
               Row(
                 children: <Widget>[
