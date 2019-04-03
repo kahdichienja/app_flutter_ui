@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             title: new Text('Posts'),
             onTap: () {
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Posts())
+                context, MaterialPageRoute(builder: (context) => HomePage())
               );
             },
           ),

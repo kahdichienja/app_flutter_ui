@@ -1,123 +1,123 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-class Posts extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return new MaterialApp(
-      title: 'Posts',
-      debugShowCheckedModeBanner: false,
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new AllPosts(title: 'Posts'),
-    );
-  }
+// import 'package:flutter/material.dart';
+// import 'dart:async';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// class Posts extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context) {
+//     // TODO: implement build
+//     return new MaterialApp(
+//       title: 'Posts',
+//       debugShowCheckedModeBanner: false,
+//       theme: new ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: new AllPosts(title: 'Posts'),
+//     );
+//   }
   
-}
+// }
 
 
-class AllPosts extends StatefulWidget {
+// class AllPosts extends StatefulWidget {
 
-  AllPosts({Key key, this.title}) : super(key: key);
-  final String title;
+//   AllPosts({Key key, this.title}) : super(key: key);
+//   final String title;
 
-  @override
-  _AllPostsState createState() => _AllPostsState();
-}
+//   @override
+//   _AllPostsState createState() => _AllPostsState();
+// }
 
-class _AllPostsState extends State<AllPosts> {
+// class _AllPostsState extends State<AllPosts> {
 
-  Future<List<User>> _getUsers() async {
-    var data = await http.get("https://next.json-generator.com/api/json/get/E1Qj6QaOL?indent=2");
-    // var data = await http.get("http://192.168.137.1:8080/Api/posts/?format=api");
-    var jsonData = json.decode(data.body);
+//   Future<List<User>> _getUsers() async {
+//     var data = await http.get("https://next.json-generator.com/api/json/get/E1Qj6QaOL?indent=2");
+//     // var data = await http.get("http://192.168.137.1:8080/Api/posts/?format=api");
+//     var jsonData = json.decode(data.body);
 
-    List<User> users = [];
-    for (var u in jsonData) {
-      User user = User(u["index"], u["photo"], u["author"], u["about"], u["name"], u["email"],u["picture"], u["address"], u["phone"]);
+//     List<User> users = [];
+//     for (var u in jsonData) {
+//       User user = User(u["index"], u["photo"], u["author"], u["about"], u["name"], u["email"],u["picture"], u["address"], u["phone"]);
 
-      users.add(user);      
-    }
-    print(users.length);
-    return users;
-  }
+//       users.add(user);      
+//     }
+//     print(users.length);
+//     return users;
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
-      body: Container(
-        child: FutureBuilder(
-          future: _getUsers(),
-          builder: (BuildContext context, AsyncSnapshot snapshot){
-            if (snapshot.data == null) {
-              return Container(
-                child: Center(
-                  child: Text("Your Internet Connection Seems To Be Low. Please wait..."),
-                ),
-              );
-            } else {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    snapshot.data[index].photo
-                  ),
-                ),
-                // title: Text(snapshot.data[index].author),
-                title: Text(snapshot.data[index].name),
-                subtitle: Text(snapshot.data[index].email),
-                onTap: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => DetailPage()))
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       appBar: new AppBar(
+//         title: new Text(widget.title),
+//       ),
+//       body: Container(
+//         child: FutureBuilder(
+//           future: _getUsers(),
+//           builder: (BuildContext context, AsyncSnapshot snapshot){
+//             if (snapshot.data == null) {
+//               return Container(
+//                 child: Center(
+//                   child: Text("Your Internet Connection Seems To Be Low. Please wait..."),
+//                 ),
+//               );
+//             } else {
+//             return ListView.builder(
+//               itemCount: snapshot.data.length,
+//               itemBuilder: (BuildContext context, int index) {
+//               return ListTile(
+//                 leading: CircleAvatar(
+//                   backgroundImage: NetworkImage(
+//                     snapshot.data[index].photo
+//                   ),
+//                 ),
+//                 // title: Text(snapshot.data[index].author),
+//                 title: Text(snapshot.data[index].name),
+//                 subtitle: Text(snapshot.data[index].email),
+//                 onTap: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => DetailPage()))
                 
-              );
-             },
+//               );
+//              },
              
-            );
+//             );
             
-          }
-          },
-        ),
-      ),
-    );
-  }
-}
+//           }
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class DetailPage extends StatelessWidget {
-  final User user;
+// class DetailPage extends StatelessWidget {
+//   final User user;
 
-  DetailPage({Key key, this.user}) : super(key: key);
+//   DetailPage({Key key, this.user}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: Text(user.name),
-      ),
-    );
-  }
-}
-class User {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       appBar: new AppBar(
+//         title: Text(user.name),
+//       ),
+//     );
+//   }
+// }
+// class User {
 
-  final int index;
-  final String about;
-  final String name;
-  final String email;
-  final String picture;
-  final String address;
-  final String phone;
-  final String author;
-  final String photo;
+//   final int index;
+//   final String about;
+//   final String name;
+//   final String email;
+//   final String picture;
+//   final String address;
+//   final String phone;
+//   final String author;
+//   final String photo;
 
-  User(this.photo, this.author,this.index, this.about, this.name,this.email,this.picture,this.phone,this.address);
+//   User(this.photo, this.author,this.index, this.about, this.name,this.email,this.picture,this.phone,this.address);
   
-}
+// }
 
 // import 'dart:async';
 // import 'dart:convert';
@@ -200,3 +200,74 @@ class User {
 //     );
 //   }
 // }
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
+
+// void main() {
+//   runApp(MaterialApp(
+//     home: HomePage(),
+//   ));
+// }
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  Map data;
+  List userData;
+
+  Future getData() async {
+    http.Response response = await http.get("https://reqres.in/api/users?page=2");
+    data = json.decode(response.body);
+    setState(() {
+      userData = data["data"];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Fake Friends"),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView.builder(
+          itemCount: userData == null ? 0 : userData.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(userData[index]["avatar"]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text("${userData[index]["first_name"]} ${userData[index]["last_name"]}",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w700,
+                      ),),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
+      ),
+    );
+  }
+}
