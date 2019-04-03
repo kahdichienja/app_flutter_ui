@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'posts.dart';
+import 'gallery.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
             title: new Text('Posts'),
             onTap: () {
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage())
+                context, MaterialPageRoute(builder: (context) => Post())
               );
             },
           ),
@@ -50,6 +51,11 @@ class _HomePageState extends State<HomePage> {
           new ListTile(
             leading: new Icon(Icons.camera),
             title: new Text('Gallery'),
+            onTap: (){
+              Navigator.push(
+                context, MaterialPageRoute(builder:  (context) => MyGallery())
+              );
+            },
           ),
           new ListTile(
             leading: new Icon(Icons.notification_important),
@@ -123,7 +129,7 @@ class MainContent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: new Container(
-              child: new Column(
+            child: new Column(
             children: <Widget>[
               Row(
                 children: <Widget>[
