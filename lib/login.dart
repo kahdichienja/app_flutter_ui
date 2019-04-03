@@ -14,6 +14,14 @@ class LoginPage extends StatelessWidget {
         iconTheme: new IconThemeData(color: Color(0xFF18D191)),
       ),
       body: Container(
+
+        decoration: new BoxDecoration(
+          image: new DecorationImage(
+            image: new AssetImage('res/img/banner-bg.png'),
+            fit: BoxFit.fill
+            
+          )
+        ),
         width: double.infinity,
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,7 +108,7 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 18.0),
+                    padding: const EdgeInsets.only(bottom: 4.0),
                     child: new Text(
                       "Create a new Account",
                       style: new TextStyle(
