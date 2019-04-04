@@ -1,7 +1,9 @@
+import 'package:app/pages/chart.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'posts.dart';
 import 'gallery.dart';
+import 'package:app/pages/pushNotifications.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -33,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             title: new Text('Home'),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => QuickBee()));
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
             },
           ),
           new ListTile(
@@ -47,6 +49,10 @@ class _HomePageState extends State<HomePage> {
           new ListTile(
             leading: new Icon(Icons.comment),
             title: new Text('Chart'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Chart()));
+            },
           ),
           new ListTile(
             leading: new Icon(Icons.camera),
@@ -59,6 +65,10 @@ class _HomePageState extends State<HomePage> {
           new ListTile(
             leading: new Icon(Icons.notification_important),
             title: new Text('Notifications'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Notify()));
+            },
           ),
           new Divider(
             color: Colors.black45,

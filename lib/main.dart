@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 void main() => runApp(QuickBee());
 
 class QuickBee extends StatelessWidget {
@@ -20,6 +23,15 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = new GoogleSignIn();
+
+    Future<FirebaseUser> _signIn() async{
+      GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+      GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
+      // FirebaseUser user = await _auth.si
+
+    }
     return new Scaffold(
       body: Center(
         child: Column(
@@ -128,18 +140,29 @@ class MyHomePage extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        left: 10.0, right: 10.0, top: 10.0),
-                    child: new Container(
-                      alignment: Alignment.center,
-                      height: 60.0,
-                      width: 70.0,
-                      decoration: new BoxDecoration(
-                          color: Color(0xFFDF513B),
-                          borderRadius: new BorderRadius.circular(10.0)),
-                      child: new Text(
-                        "Google",
-                        style:
-                            new TextStyle(fontSize: 20.0, color: Colors.white),
+                        left: 20.0, right: 10.0, top: 10.0),
+                      
+                    child: GestureDetector(
+                      
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ));
+                        // applogin-d0bd4
+                       //implementation 'com.google.firebase:firebase-core:16.0.1'   
+                      },
+                      child: new Container(
+                        alignment: Alignment.center,
+                        height: 70.0,
+                        width: 70.0,
+                        decoration: new BoxDecoration(
+                            color: Color(0xFFDF513B),
+                            borderRadius: new BorderRadius.circular(10.0)),
+                        child: new Text(
+                          "Sign In With Google",
+                          style: new TextStyle(
+                              fontSize: 20.0, color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

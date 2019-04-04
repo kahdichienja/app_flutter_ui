@@ -1,3 +1,5 @@
+import 'package:app/pages/chart.dart';
+import 'package:app/pages/pushNotifications.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'home.dart';
@@ -50,6 +52,10 @@ class _MyGalleryState extends State<MyGallery> {
           new ListTile(
             leading: new Icon(Icons.comment),
             title: new Text('Chart'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Chart()));
+            },
           ),
           new ListTile(
             leading: new Icon(Icons.camera),
@@ -62,6 +68,10 @@ class _MyGalleryState extends State<MyGallery> {
           new ListTile(
             leading: new Icon(Icons.notification_important),
             title: new Text('Notifications'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Notify()));
+            },
           ),
           new Divider(
             color: Colors.black45,
